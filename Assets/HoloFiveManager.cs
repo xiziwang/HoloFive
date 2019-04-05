@@ -21,20 +21,30 @@ public class HoloFiveManager : MonoBehaviour
     void Update()
     {
         Transform tm = Camera.main.transform;
+        Debug.Log("POSSSSSSSSSSSSSSSSSSSSSSS: " +tm.position );
         CustomMessages.Instance.SendHeadTransform(tm.position, tm.rotation, 0);
     }
 
 
     void OnHeadTransform(NetworkInMessage msg)
     {
-        Debug.Log("### ### ### ### Head Transform Received");
-        Vector3 poition = CustomMessages.Instance.ReadVector3(msg);
+        //read user id etc of the front of the message
+        msg.ReadInt32();
+        msg.ReadInt32();
+
+        Vector3 position = CustomMessages.Instance.ReadVector3(msg);
         Quaternion rotation = CustomMessages.Instance.ReadQuaternion(msg);
-        this.AdjustTransform(otherPlayerHead, poition, rotation);
+        Debug.Log("### ### ### ### Head Transform Received" + position);
+
+        this.AdjustTransform(otherPlayerHead, position, rotation);
     }
 
     void OnHandTransform(NetworkInMessage msg)
     {
+        //read user id etc of the front of the message
+        msg.ReadInt32();
+        msg.ReadInt32();
+
         Debug.Log("### ### ### ### Hand Transform Received");
         Vector3 poition = CustomMessages.Instance.ReadVector3(msg);
         Quaternion rotation = CustomMessages.Instance.ReadQuaternion(msg);
@@ -43,6 +53,10 @@ public class HoloFiveManager : MonoBehaviour
 
     void OnHandStatus(NetworkInMessage msg)
     {
+        //read user id etc of the front of the message
+        msg.ReadInt32();
+        msg.ReadInt32();
+
         int status = msg.ReadInt32();
         Debug.Log("### ### ### ### Hand Status Received: " + status);
         if (status == 1)
