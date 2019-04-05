@@ -15,7 +15,7 @@ MonoBehaviour:
     vuforiaLicenseKey: AfqzN/H/////AAABmRgYDamAU0v+mKP2dLreIgZqZ/PL43SIWPoxoMjsyCZbOjBpcgE3nEXqRZihTWc7gsdsII3Y3qopGs1KgQgWWzrne52HSjKMVsOVBVnr+jUTMt4P7W69ZeMXdNTEmhZ2WUMzJsPPURaU9oD6p9tfOpHnDsMCHDwaBJREWIkRA/asTr/93OYazrdk4xbNakjR+fGe9iKsvwAMHPND4ydjcy2IChQv8o+1Mv6G3R5x4k6/LH1AtL8v7KVxi1I1siwnq6wbV4ZJ7oGBH8DDy0heDfj66LOFCZ2QvUN+qswUvloyT3XVRpczWjyQOtFDkkN0ZzXzgNQD0kojVWpolI8RmLYvpGhUb0wDiaBIR/Edbxu5
     ufoLicenseKey: QWJyVDF0Ny8vLy8vQUFBQUtPNGZZMjFIa1VhcmtLdGx0Y1hmWll0NFJ5U3hYSVpXK2Z3QmZ1VGo1cHpPKzJNZjkwakcvLzQweEJ6aWxQTXNrU3RZTFNyWXpWWnRoNHVoZVkrSnJES2hmZ2RaaGdiR3hKenhlYU9nSFMxd1NpQzBOYS9HTzlBaTNqQ2RrN0ttQU04dnlpeEowKzIxMHQzTCtxa0V0VG0rODh1VU10bHg5WlZIVkd5R1hQNVpYMWRUQkxJRWN6a254endTd0J4Q0JxMVJpTXA0dG1MN0F0WUdWaE0wSlV3a1Fpa2tTQmZyY3NWVnVFclZkRVlheTVlMklTb0VhYjJtZ0RHU1N0ZFN4UVFORGRUSzI2cWZ6ZEl0TWlldk40cEFDVFQ4N0hIazN1SFNHWGxjcGI3eDNxQzNUUDBEbU13SXVuUHFrUi9uVHdVMEp5L0xGYnJVazd6Mk9WVmRmVkpuaUZrZzFGNEw4UFI1a2N5TjBFem0=
     delayedInitialization: 0
-    cameraDeviceModeSetting: -1
+    cameraDeviceModeSetting: -2
     maxSimultaneousImageTargets: 1
     maxSimultaneousObjectTargets: 1
     useDelayedLoadingObjectTargets: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
     autoInitTracker: 0
     autoStartTracker: 0
   webcam:
-    deviceNameSetInEditor: 
+    deviceNameSetInEditor: HD WebCam
     flipHorizontally: 0
     turnOffWebCam: 0
     renderTextureLayer: 30
