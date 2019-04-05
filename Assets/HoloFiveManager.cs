@@ -6,8 +6,8 @@ using HoloToolkit.Unity;
 
 public class HoloFiveManager : MonoBehaviour
 {
-    GameObject otherPlayerHand;
-    GameObject otherPlayerHead;
+    public GameObject otherPlayerHand;
+    public GameObject otherPlayerHead;
 
     // Use this for initialization
     void Start()

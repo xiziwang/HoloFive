@@ -295,6 +295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d43767c2ae884241b67c470b34d3946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  otherPlayerHand: {fileID: 415812851}
+  otherPlayerHead: {fileID: 395949752}
 --- !u!4 &329700226
 Transform:
   m_ObjectHideFlags: 0
@@ -409,7 +411,7 @@ GameObject:
   - component: {fileID: 395949755}
   - component: {fileID: 395949754}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1554,5 +1556,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af23eb652f2acb4289d7084cc84df60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherPlayerHand: {fileID: 0}
-  otherPlayerHead: {fileID: 0}
