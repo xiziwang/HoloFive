@@ -8,6 +8,10 @@ public class HoloFiveManager : MonoBehaviour
 {
     public GameObject otherPlayerHand;
     public GameObject otherPlayerHead;
+    public GameObject localPlayerHand;
+
+    public bool LocalHandDetected { get; set; }
+    public bool OtherHandDetected { get; set; }
 
     // Use this for initialization
     void Start()
@@ -15,14 +19,21 @@ public class HoloFiveManager : MonoBehaviour
         CustomMessages.Instance.MessageHandlers[CustomMessages.TestMessageID.HeadTransform] = this.OnHeadTransform;
         CustomMessages.Instance.MessageHandlers[CustomMessages.TestMessageID.HandTransform] = this.OnHandTransform;
         CustomMessages.Instance.MessageHandlers[CustomMessages.TestMessageID.HandStatus] = this.OnHandStatus;
+        OtherHandDetected = false;
+        LocalHandDetected = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Transform tm = Camera.main.transform;
-        Debug.Log("POSSSSSSSSSSSSSSSSSSSSSSS: " +tm.position );
-        CustomMessages.Instance.SendHeadTransform(tm.position, tm.rotation, 0);
+        // send self head transform
+        Transform cameraTM = Camera.main.transform;
+        CustomMessages.Instance.SendHeadTransform(cameraTM.position, cameraTM.rotation, 0);
+
+        if(LocalHandDetected) {
+            Transform handTM = localPlayerHand.transform;
+            CustomMessages.Instance.SendHandTransform(handTM.position, handTM.rotation, 0);
+        }
     }
 
 
@@ -58,13 +69,15 @@ public class HoloFiveManager : MonoBehaviour
         msg.ReadInt32();
 
         int status = msg.ReadInt32();
-        Debug.Log("### ### ### ### Hand Status Received: " + status);
+        //Debug.Log("### ### ### ### Hand Status Received: " + status);
         if (status == 1)
         {
+            this.OtherHandDetected = true;
             this.DisPlayOtherHand();
         }
         else if (status == 0)
         {
+            this.OtherHandDetected = false;
             this.HideOtherHand();
         }
     }

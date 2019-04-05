@@ -154,7 +154,7 @@ public class CustomMessages : Singleton<CustomMessages>
                 MessagePriority.Immediate,
                 MessageReliability.UnreliableSequenced,
                 MessageChannel.Avatar);
-            Debug.Log("+++ +++ +++ +++ Hand Status Sent: " + status);
+            //Debug.Log("+++ +++ +++ +++ Hand Status Sent: " + status);
         }
     }
 
