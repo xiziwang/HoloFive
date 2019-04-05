@@ -20,7 +20,6 @@ public class HoloFiveManager : MonoBehaviour
         CustomMessages.Instance.MessageHandlers[CustomMessages.TestMessageID.HandTransform] = this.OnHandTransform;
         CustomMessages.Instance.MessageHandlers[CustomMessages.TestMessageID.HandStatus] = this.OnHandStatus;
         OtherHandDetected = false;
-        LocalHandDetected = false;
     }
 
     // Update is called once per frame
@@ -30,10 +29,8 @@ public class HoloFiveManager : MonoBehaviour
         Transform cameraTM = Camera.main.transform;
         CustomMessages.Instance.SendHeadTransform(cameraTM.position, cameraTM.rotation, 0);
 
-        if(LocalHandDetected) {
-            Transform handTM = localPlayerHand.transform;
-            CustomMessages.Instance.SendHandTransform(handTM.position, handTM.rotation, 0);
-        }
+        Transform handTM = localPlayerHand.transform;
+        CustomMessages.Instance.SendHandTransform(handTM.position, handTM.rotation, 0);
     }
 
 

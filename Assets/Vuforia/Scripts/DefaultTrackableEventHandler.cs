@@ -53,7 +53,6 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
-            GameObject.Find("HoloFiveManager").GetComponent<HoloFiveManager>().LocalHandDetected = true;
             CustomMessages.Instance.SendHandStatus(1);
             OnTrackingFound();
         }
@@ -61,7 +60,6 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
                  newStatus == TrackableBehaviour.Status.NOT_FOUND)
         {
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
-            GameObject.Find("HoloFiveManager").GetComponent<HoloFiveManager>().LocalHandDetected = true;
             CustomMessages.Instance.SendHandStatus(0);
             OnTrackingLost();
         }
