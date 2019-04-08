@@ -18,6 +18,7 @@ public class ActionManager : MonoBehaviour {
     {
         if (other.gameObject.name=="Player2Hand")
         {
+
             // TODO: Send msg to phone
             Debug.Log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         }
