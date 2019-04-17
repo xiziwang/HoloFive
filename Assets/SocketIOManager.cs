@@ -11,9 +11,11 @@ public class SocketIOManager : MonoBehaviour {
     public GameObject serverIPAddressInputFieldText;
     public GameObject statusText;
     private SocketManager manager;
+    public bool isConnected;
+
     // Use this for initialization
     void Start () {
-		
+        isConnected = false;
 	}
 	
 	// Update is called once per frame
@@ -29,6 +31,7 @@ public class SocketIOManager : MonoBehaviour {
         try{
             manager = new SocketManager(new Uri(serverIPAddress));
             statusText.GetComponent<Text>().text = "Status: Connected";
+            isConnected = true;
         }
         catch
         {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ActionManager : MonoBehaviour {
     private SocketIOManager socketIOManager;
+    public AudioSource highFivePlauseAudio;
 
     // Use this for initialization
     void Start () {
@@ -20,9 +21,12 @@ public class ActionManager : MonoBehaviour {
     {
         if (other.gameObject.name=="Player2Hand")
         {
-
-            // TODO: Send msg to phone
-            socketIOManager.SendMsg();
+            if(socketIOManager.isConnected) {
+                // Send msg to phone
+                socketIOManager.SendMsg();
+            }
+            // Play audio
+            highFivePlauseAudio.Play();
         }
     }
 }

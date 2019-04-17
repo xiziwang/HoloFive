@@ -20,6 +20,8 @@ public class HoloFiveManager : MonoBehaviour
         CustomMessages.Instance.MessageHandlers[CustomMessages.TestMessageID.HandTransform] = this.OnHandTransform;
         CustomMessages.Instance.MessageHandlers[CustomMessages.TestMessageID.HandStatus] = this.OnHandStatus;
         OtherHandDetected = false;
+        this.HideOtherHead();
+        this.HideOtherHand();
     }
 
     // Update is called once per frame
@@ -42,9 +44,9 @@ public class HoloFiveManager : MonoBehaviour
 
         Vector3 position = CustomMessages.Instance.ReadVector3(msg);
         Quaternion rotation = CustomMessages.Instance.ReadQuaternion(msg);
-        Debug.Log("### ### ### ### Head Transform Received" + position);
-
         this.AdjustTransform(otherPlayerHead, position, rotation);
+
+        this.DisplayOtherHead();
     }
 
     void OnHandTransform(NetworkInMessage msg)
@@ -53,10 +55,9 @@ public class HoloFiveManager : MonoBehaviour
         msg.ReadInt32();
         msg.ReadInt32();
 
-        Debug.Log("### ### ### ### Hand Transform Received");
-        Vector3 poition = CustomMessages.Instance.ReadVector3(msg);
+        Vector3 position = CustomMessages.Instance.ReadVector3(msg);
         Quaternion rotation = CustomMessages.Instance.ReadQuaternion(msg);
-        this.AdjustTransform(otherPlayerHand, poition, rotation);
+        this.AdjustTransform(otherPlayerHand, position, rotation);
     }
 
     void OnHandStatus(NetworkInMessage msg)
@@ -95,4 +96,13 @@ public class HoloFiveManager : MonoBehaviour
         otherPlayerHand.SetActive(false);
     }
 
+    void DisplayOtherHead()
+    {
+        otherPlayerHead.SetActive(true);
+    }
+
+    void HideOtherHead()
+    {
+        otherPlayerHead.SetActive(false);
+    }
 }
