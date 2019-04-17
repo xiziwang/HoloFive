@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ActionManager : MonoBehaviour {
+    private SocketIOManager socketIOManager;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    // Use this for initialization
+    void Start () {
+        socketIOManager = GameObject.Find("SocketIOCanvas").GetComponent<SocketIOManager>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,7 +22,7 @@ public class ActionManager : MonoBehaviour {
         {
 
             // TODO: Send msg to phone
-            Debug.Log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            socketIOManager.SendMsg();
         }
     }
 }
