@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8">
+        <meta name="author" content="Xizi &quot;Lucy&quot; Wang">
+        <meta name="description" content="For HoloFive (PAT511/SI515 Final Project)">
+        <title>HoloFive Client</title>      
+    </head>
+
+    <body>    
+      Server IP Address: <input type="text" id="ip"><br>
+      Player ID: <input type="text" id="playerID"><br>
+      <input id="connectButton" type="button" value="Connect" onclick="webSocketTest()" />
+      <p>
+        <div id="playerIDStatus">Player ID: Unknown</div>
+        <div id="status">Status: Disconnected</div>
+        <div id="counter">Vibration Count: 0</div>
+      </p>
+
+    </body>
+    <script type="text/javascript" src="js/socket.io.js"></script>
+
+    <script type="text/javascript">
+    // var io = require('socket.io-client');
+    var socket;
+    var counter = 0;
+
+    function webSocketTest() {
+      var ip = document.getElementById("ip").value;
+      var playerID = document.getElementById("playerID").value;
+
+      // make sure ip address and player id are entered
+      if(ip=="") {
+        window.alert("Please fill the IP address!");
+        return false;
+      }
+      if(playerID=="") {
+        window.alert("Please fill the Player ID!");
+        return false;
+      }
+
+      // connect to the server
+      socket = io('http://'+ip+':8080');
+
+      socket.on('connect', function(){
+        console.log('Connected');
+        document.getElementById("status").innerHTML = "Status: Connected";
+        document.getElementById("playerIDStatus").innerHTML = "Player: "+playerID;
+      });
+
+      socket.on('vibrate', function(data){
+        console.log('data:', data);
+        if(data==playerID){
+          counter += 1;
+          document.getElementById("counter").innerHTML = "Vibration Count "+counter;
+          vibrate();
+        } 
+      });
+
+      // disconnected from the server
+      socket.on('disconnect', function(){
+        document.getElementById("status").innerHTML = "Status: Disconnected";
+      });
+    }
+
+    function vibrate() {
+        // Vibrate for 500ms
+        navigator.vibrate([500]);
+    }
+    </script>
+</html>
